@@ -12,9 +12,12 @@ import SignUp from './pages/Auth/SignUp';
 import Home from './pages/Dashboard/Home';
 import Expense from './pages/Dashboard/Expense';
 import Income from './pages/Dashboard/Income';
+import UserProvider from "./context/UserContext";
+
 
 const App = () => {
   return (
+    <UserProvider>
     <div> 
       <Router>
         <Routes>
@@ -27,6 +30,7 @@ const App = () => {
         </Routes>
       </Router>
     </div>
+    </UserProvider>
   )
 }
 
@@ -37,6 +41,6 @@ const Root = () => {
   const isAuthenticated = !!localStorage.getItem("token");
 
   //redirect to dashboard if authenticated, otherwise go to login
-  return isAuthenticated ?(<Navigate to="/dashboaed"/>):(<Navigate to="/login"/>);
+  return isAuthenticated ?(<Navigate to="/dashboard"/>):(<Navigate to="/login"/>);
   
 }

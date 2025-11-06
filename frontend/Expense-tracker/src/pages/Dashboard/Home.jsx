@@ -1,10 +1,11 @@
 import React from 'react'
 
 const Home = () => {
+  useUserAuth();
   return (
-    <div>
-      HOME
-    </div>
+    <DashboardLayout activeMenu="Dashboard">
+      <div className='my-5 mx-auto'></div>
+    </DashboardLayout>
   )
 }
 

@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+
 import React, { useState, useContext } from "react";
 import AuthLayout from "../../components/layouts/AuthLayout";
 import { Link, useNavigate } from "react-router-dom";
 import Input from "../../components/inputs/Input";
 import { validateEmail } from "../../utils/helper";
 import ProfilePhotoSelector from "../../components/inputs/ProfilePhotoSelector";
-import { UserContext } from "./context/UserContext";
-import { uploadImage, axiosInstance, API_PATHS } from "../../utils/api";
+import { UserContext } from "../../contexts/UserContext";
+import { API_PATHS } from "../../utils/apiPath";
+import  axiosInstance  from "../../utils/axiosInstance";
+import  uploadImage from "../../utils/uploadimage";
 
 
 
@@ -52,7 +54,7 @@ const SignUp = () => {
       //Upload image if present
       if(profilePic){
         const imgUploadsRes = await uploadImage(profilePic);
-        profileImageUrl = imgUploadsRes.data.url || "";
+        profileImageUrl = imgUploadsRes.imageUrl || ""; 
       }
 
       const response = await axiosInstance.post(API_PATHS.AUTH.REGISTER, {

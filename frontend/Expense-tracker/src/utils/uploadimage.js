@@ -1,5 +1,5 @@
 import { API_PATHS } from "./apiPath";
-import axiousInstance from "./axiosinstance";
+import axiosInstance from "./axiosInstance";
 
 const uploadImage = async (imageFile) => {
     const formData = new FormData();
@@ -7,7 +7,7 @@ const uploadImage = async (imageFile) => {
     formData.append("image", imageFile);
 
     try{
-        const response = await axiousInstance.post(API_PATHS.IMAGE.UPLOAD_IMAGE, formData, {
+        const response = await axiosInstance.post(API_PATHS.IMAGE.UPLOAD_IMAGE, formData, {
             headers: {
                 "Content-Type": "multipart/form-data"
             }
